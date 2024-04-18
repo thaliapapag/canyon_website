@@ -14,41 +14,33 @@
 </head>
 
 <script>
-    function includeHTML() {
-      var z, i, elmnt, file, xhttp;
-      /*loop through a collection of all HTML elements:*/
-      z = document.getElementsByTagName("*");
-      for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        /*search for elements with a certain attribute:*/
-        file = elmnt.getAttribute("w3-include-html");
-        if (file) {
-          /*make an HTTP request using the attribute value as the file name:*/
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-              /*remove the attribute, and call this function once more:*/
-              elmnt.removeAttribute("w3-include-html");
-              includeHTML();
+    //includes the nav.html file
+    function includeNAV() {
+        const elements = document.querySelectorAll('[nav]');
+
+        elements.forEach(element => {
+            const file = element.getAttribute('nav');
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status == 200) { element.innerHTML = this.responseText; }
+                    if (this.status == 404) { element.innerHTML = 'Page not found.'; }
+                    element.removeAttribute('nav');
+                    includeHTML();
+                }
             }
-          }      
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          /*exit the function:*/
-          return;
-        }
-      }
-    };
+            xhttp.open('GET', file, true);
+            xhttp.send();
+        });
+    }
 </script>
 
 <body>
 
-    <div w3-include-html="nav.html"></div>
+    <div nav="nav.html"></div>
 
     <script>
-        includeHTML();
+        includeNAV();
     </script>
 
     <div class="about-section">
@@ -61,9 +53,9 @@
                 <img src="./HeadShots/Penelope Gallardo.jfif" alt="Penelope Gallardo" style="width:100%">
                 <div class="container">
                 <h2>Penelope Gallardo</h2>
-                <p>Junior</p>
+                <p>Junior Majoring in CS and Business</p>
                 <p>penelope.gallardo@emory.edu</p>
-                <p><button class="button">Contact</button></p>
+                <!-- <p><button class="button">Contact</button></p> -->
                 </div>
             </div>
         </div>
@@ -75,7 +67,7 @@
                 <h2>Andrew Lu</h2>
                 <p>Sophmore Majoring in CS</p>
                 <p>andrew.lu@emory.edu</p>
-                <p><button class="button">Contact</button></p>
+                <!-- <p><button class="button">Contact</button></p> -->
                 </div>
             </div>
         </div>
@@ -85,9 +77,9 @@
                 <img src="./HeadShots/Lindsay Esterman.jfif" alt="Lindsay Esterman" style="width:100%">
                 <div class="container">
                 <h2>Lindsay Esterman</h2>
-                <p>Sophmore</p>
+                <p>Sophmore Majoring in CS</p>
                 <p>lindsay.esterman@emory.edu</p>
-                <p><button class="button">Contact</button></p>
+                <!-- <p><button class="button">Contact</button></p> -->
                 </div>
             </div>
         </div>
@@ -101,7 +93,7 @@
                 <h2>Thalia Papageorgiou</h2>
                 <p>Sophmore Majoring in CS</p>
                 <p>thalia.papageorgiou@emory.edu</p>
-                <p><button class="button">Contact</button></p>
+                <!-- <p><button class="button">Contact</button></p> -->
                 </div>
             </div>
         </div>
@@ -113,7 +105,7 @@
                 <h2>James Yoon</h2>
                 <p>Junior Majoring in CS</p>
                 <p>james.yoon@emory.edu</p>
-                <p><button class="button">Contact</button></p>
+                <!-- <p><button class="button">Contact</button></p> -->
                 </div>
             </div>
         </div>
@@ -125,7 +117,7 @@
                 <h2>Riyan Shah</h2>
                 <p>Sophmore Majoring in CS and QSS</p>
                 <p>riyan.shah@emory.edu</p>
-                <p><button class="button">Contact</button></p>
+                <!-- <p><button class="button">Contact</button></p> -->
                 </div>
             </div>
         </div>
